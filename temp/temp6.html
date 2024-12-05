@@ -38,6 +38,12 @@
         border: 5px solid orange;
         border-radius: 20px;
         background: linear-gradient(maroon, silver);
+        box-shadow: 5px 5px 5px 5px grey;
+        transition-property: transform;
+        transition-duration: 0.5s;
+      }
+      .box:hover{
+        transform: scale(1.5,1.5);
       }
 
       .container {
@@ -67,6 +73,29 @@
         opacity: 0.4;
         color: white;
       }
+      #h a{
+        text-decoration: none;
+      }
+      ul{
+        margin: 0px;
+        padding: 0px;
+      }
+      li{
+        display: inline-block;
+        padding: 5px;
+        font-size: larger;
+      }
+      .menu{
+        margin: 0px;
+      }
+      .submenu{
+        display: none;
+        position: absolute;
+        background-color: silver;
+      }
+      .menu:hover .submenu{
+        display: block;
+      }
     </style>
   </head>
   <body>
@@ -79,11 +108,19 @@
     <div id="h">
       <h3>My Application</h3>
       <div>
-        <a href="#home">Home</a>
-        <a href="#projects">Projects</a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Contact</a>
+        <ul>
+        <li><a href="#home">Home</a></li>
+        <li class="menu">
+            <a href="#projects">Projects</a>
+            <div class="submenu">
+                <a href="#">Project 1</a>
+                <a href="#">Project 2</a>
+            </div>
+        </li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        </ul>
       </div>
     </div>
     <div class="row header" id="home">
