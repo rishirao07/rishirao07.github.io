@@ -9,18 +9,48 @@
         let username = ""
         let usermail = ""
         let currBalance=0
+        function showUser(){
+            let str = ""
+            for(let i=0;i<users.length;i++){
+                
+            }
+        }
+        function saveData(){
+            let amount = Number(document.getElementById("amount").value);
+            let type = document.getElementById("type").value;
+            for(let i=0;i<users.length;i++){
+                if (users[i].email == usermail){
+                    if(type=="1"){
+                        users[i].balance += amount;
+                    }
+                    else if(type=="2"){
+                        if(users[i].balance > amount){
+                        users[i].balance -= amount;
+                        }
+                        else{
+                            funds.innerHTML="Insufficient funds";
+                        }
+                    }
+                    spBalance.innerHTML = users[i].balance;
+                    break;
+                }
+            }
+        }
+
         function home(){
             let str = `
             <h2>Welcome ${username}</h2>
             <button onclick = 'showLogin()'>Logout</button>
-            <p><input type="number" id="amount" placeholder="Enter amount"></p>
             <p><select id="type">
                 <option value=0>---Select---</option>
                 <option value=1>Deposit</option>
                 <option value=2>Withdraw</option>
+                <option value=3>Transfer</option>
                 </select></p>
-                <button>Submit</button>
-                <p>Current Balance: ${currBalance}</p>
+                <p><select id="selUser"></select></p>
+                <p><input type="number" id="amount" placeholder="Enter amount"></p>
+                <button onclick='saveData()'>Submit</button>
+                <div id="funds"><p>Current Balance: <span id='spBalance'>${currBalance}</span></p></div>
             `
             root.innerHTML = str;
         }
